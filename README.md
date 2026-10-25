@@ -168,6 +168,7 @@ plugin_manager action=install_bundle target=$(pwd)
 
 - 渐进式披露的 schema 节省依赖 provider 支持工具更新声明。不支持的路由仍能工作，但会退回当前有效工具集，高级 schema 可能仍被一起发送。
 - schema 预算只算 Tether 自己的工具，不是全局预算；core 控制面始终存在，预算很小时会告警而不是把控制面藏掉。
+- **Tether 不是全局上下文压缩器**：它只影响自己注册的工具和结果，不裁剪其他工具结果、历史消息、系统提示词或模型输出。近全局方案应另做 context-guard（全局 `tools/post-execute` + 复用 compaction pruner），不要塞进本插件。
 - ref 是内存派生缓存，进程重启/插件重载后失效；`fetch` 会明确报 unknown/expired，重新 read 即可。跨调用 read 去重有 30 分钟窗口，窗口外会重新返回内容。
 - `tether_patch` 默认 `preview`；`apply` 逐个文件执行，**没有跨文件事务/回滚**。它使用每文件版本检查，适用普通文本文件；不处理二进制、重命名、删除。需要严格 read-before-edit 策略的场景，仍应使用 Harness 内置 edit 工具。
 - PDF 只提取文本层；扫描件/OCR、复杂 CID 字体、表单和排版不在范围内。DOCX 只读 `word/document.xml`，不保留图片、批注、样式。旧版 `.doc/.xls/.ppt` 直接拒绝并提示转换。
