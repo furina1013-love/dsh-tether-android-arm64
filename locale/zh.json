@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "dsh-tether-android-arm64（系绳）",
+    "description": "面向 Android / Linux-arm64 的有界批量工具、按需 schema，以及自动 git 检查点。"
+  }
+}

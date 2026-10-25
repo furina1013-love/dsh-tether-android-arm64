@@ -1,0 +1,42 @@
+{
+  "name": "@local/dsh-tether-android-arm64",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Tether for Android / Linux-arm64: bounded batch tools, on-demand schemas, and automatic git checkpoints for DeepSeek Harness.",
+  "keywords": ["dsh", "deepseek-harness", "android", "linux", "arm64", "tokens", "git-checkpoint"],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/furina1013-love/dsh-tether-android-arm64.git"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "src/*.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0",
+    "dsh": ">=0.2.0-0"
+  },
+  "dependencies": {
+    "@deepseek-ai/schemastery": "~3.18.5",
+    "js-tiktoken": "^1.0.21"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "test:install": "node test/install-smoke.mjs"
+  }
+}

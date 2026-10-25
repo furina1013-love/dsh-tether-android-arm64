@@ -1,0 +1,14 @@
+# Tether bundle: one Host row, two always-visible tools, advanced tools on demand.
+- insert:
+    - id: dsh-tether-android-arm64
+      name: '@local/dsh-tether-android-arm64'
+      config:
+        enabled: true
+        schemaBudget: 900
+        batchEnabled: true
+        maxResultTokens: 320
+        autoSaveInterval: 1
+        commitPrefix: '[dsh-tether]'
+        maxBatchOps: 8
+        autoInit: false
+        refCacheSize: 128
